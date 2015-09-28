@@ -12,7 +12,7 @@
 #
 class sachinpuppet {
 package {"screen":
-  ensure => "installed"
+  ensure => "purged"
 
    
 }
