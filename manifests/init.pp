@@ -11,5 +11,10 @@
 # Sample Usage:--->>
 #
 class sachinpuppet {
+package {"screen":
+  ensure => "installed"
+
+   
+}
 
 }
