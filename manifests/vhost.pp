@@ -11,7 +11,7 @@ define sachinpuppet::vhost (
     group => 'root',
     mode => '0640',
     require => Class['sachinpuppet::install'],
-    notify => sachinpuppet::Ensite["$name"]
+    notify => Sachinpuppet::Ensite["$name"]
   }
   
   sachinpuppet::ensite {"$name":
