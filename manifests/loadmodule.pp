@@ -1,11 +1,11 @@
-define lmmsweb::loadmodule {
+define sachinpuppet::loadmodule {
   
-  include lmmsweb::params
+  include sachinpuppet::params
   
-  exec { "$::lmmsweb::params::a2enmod $name":
-    require => Class['lmmsweb::install'],
-    unless => "$::lmmsweb::params::readlink -e $lmmsweb::params::mods_enabled_directory/${name}.load",
-    notify => Class['lmmsweb::service']   
+  exec { "$::sachinpuppet::params::a2enmod $name":
+    require => Class['sachinpuppet::install'],
+    unless => "$::sachinpuppet::params::readlink -e $sachinpuppet::params::mods_enabled_directory/${name}.load",
+    notify => Class['sachinpuppet::service']   
   }
 
 }

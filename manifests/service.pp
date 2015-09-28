@@ -1,10 +1,10 @@
-class lmmsweb::service {
-  include lmmsweb::params
-  service { $::lmmsweb::params::apache_service_name:
+class sachinpuppet::service {
+  include sachinpuppet::params
+  service { $::sachinpuppet::params::apache_service_name:
     ensure => running,
     enable => true,
     hasstatus => true,
     hasrestart => true,
-    require => Class['lmmsweb::install'],
+    require => Class['sachinpuppet::install'],
   }
 }

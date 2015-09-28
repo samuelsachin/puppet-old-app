@@ -1,11 +1,11 @@
-define lmmsweb::ensite {
+define sachinpuppet::ensite {
   
-  include lmmsweb::params
+  include sachinpuppet::params
 
-  exec { "$::lmmsweb::params::a2ensite $name":
-    require => Class['lmmsweb::install'],
-    unless => "$::lmmsweb::params::readlink -e $lmmsweb::params::sites_enabled_directory/${name}.conf",
-    notify => Class['lmmsweb::service']   
+  exec { "$::sachinpuppet::params::a2ensite $name":
+    require => Class['sachinpuppet::install'],
+    unless => "$::sachinpuppet::params::readlink -e $sachinpuppet::params::sites_enabled_directory/${name}.conf",
+    notify => Class['sachinpuppet::service']   
   }
 
 }

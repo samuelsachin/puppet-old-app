@@ -1,22 +1,22 @@
-define lmmsweb::vhost (
+define sachinpuppet::vhost (
  $template='', 
  $app_hostname=''
 ){
   
-  include lmmsweb::params
+  include sachinpuppet::params
   
-  file {"$::lmmsweb::params::sites_available_directory/${name}.conf":
+  file {"$::sachinpuppet::params::sites_available_directory/${name}.conf":
     content => template($template),
     owner => 'root',
     group => 'root',
     mode => '0640',
-    require => Class['lmmsweb::install'],
-    notify => Lmmsweb::Ensite["$name"]
+    require => Class['sachinpuppet::install'],
+    notify => sachinpuppet::Ensite["$name"]
   }
   
-  lmmsweb::ensite {"$name":
-    require => File["$::lmmsweb::params::sites_available_directory/${name}.conf"],
-    notify => Class['lmmsweb::service'],
+  sachinpuppet::ensite {"$name":
+    require => File["$::sachinpuppet::params::sites_available_directory/${name}.conf"],
+    notify => Class['sachinpuppet::service'],
   }
 
 }

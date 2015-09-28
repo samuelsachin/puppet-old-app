@@ -1,6 +1,6 @@
-# Class: lmmsweb
+# Class: sachinpuppet
 #
-# This module manages lmmsweb
+# This module manages sachinpuppet
 #
 # Parameters: none
 #
@@ -10,32 +10,32 @@
 #
 # Sample Usage:
 #sambu
-class lmmsweb {
-  include lmmsweb::params
-  include lmmsweb::install
-  include lmmsweb::service
+class sachinpuppet {
+  include sachinpuppet::params
+  include sachinpuppet::install
+  include sachinpuppet::service
   
   file {'/etc/hosts':
-    content => template("lmmsweb/hosts.conf.erb"),
+    content => template("sachinpuppet/hosts.conf.erb"),
     owner   => 'root',
     group   => 'root',
     mode    => '0644'
   }
   
-  file {$lmmsweb::params::fqdnconf:
+  file {$sachinpuppet::params::fqdnconf:
     content => "ServerName localhost",
     owner   => 'root',
     group   => 'root',
     mode    => '0644',
-    notify  => Exec["$lmmsweb::params::a2enconf fqdn"]
+    notify  => Exec["$sachinpuppet::params::a2enconf fqdn"]
   }
   
-  exec {"$lmmsweb::params::a2enconf fqdn":
-    require => File[$lmmsweb::params::fqdnconf],
-    notify => Class['lmmsweb::service']
+  exec {"$sachinpuppet::params::a2enconf fqdn":
+    require => File[$sachinpuppet::params::fqdnconf],
+    notify => Class['sachinpuppet::service']
   }
   
-  file {['/var/www/vhosts','/var/www/vhosts/lmmsweb.mapofmedicine.com']:
+  file {['/var/www/vhosts','/var/www/vhosts/sachinpuppet.mapofmedicine.com']:
     ensure => directory,
     recurse => true,
     mode => '0755',
@@ -43,12 +43,12 @@ class lmmsweb {
     group => 'root'
   }
   
-  lmmsweb::loadmodule {['rewrite', 'proxy']:
-    require => Package[$::lmmsweb::params::apache_package_name],
+  sachinpuppet::loadmodule {['rewrite', 'proxy']:
+    require => Package[$::sachinpuppet::params::apache_package_name],
   }
   
-  lmmsweb::vhost {'lmmsweb.mapofmedicine.com':
-    template      => "lmmsweb/localise.mapofmedicine.com.conf.erb",
+  sachinpuppet::vhost {'sachinpuppet.mapofmedicine.com':
+    template      => "sachinpuppet/localise.mapofmedicine.com.conf.erb",
     app_hostname  => "lmms-app.internal.mapofmedicine.com",
     
   }
