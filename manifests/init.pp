@@ -8,7 +8,7 @@
 #
 # Requires: see Modulefile
 #
-# Sample Usage:
+# Sample Usage:--->>
 #
 class sachinpuppet {
 
