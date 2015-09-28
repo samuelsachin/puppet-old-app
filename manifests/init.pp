@@ -11,8 +11,13 @@
 # Sample Usage:--->>
 #
 class sachinpuppet {
-package {"screen":
-  ensure => "purged"
+
+file {'/etc/hosts' :
+  content => template("sachinpuppet/hosts.erb"),
+  owner  => 'root',
+  group   => 'root',
+  mode   =>  '0664'
+  
 
    
 }
