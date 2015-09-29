@@ -14,8 +14,7 @@ class sachinpuppet::params{
       $apache_package_name = 'httpd'
       $apache_service_name = 'httpd'
       
-      
-      
+          
       
     }
     
