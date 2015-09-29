@@ -4,7 +4,11 @@ class sachinpuppet {
   include sachinpuppet::service
   
   
-  
-  
+  file{'/etc/hosts':
+    content => template("sachinpuppet/hosts.conf.erb"),
+    owner => 'root',
+    group => 'root',
+    
+  }
   
 }
